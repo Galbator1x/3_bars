@@ -72,10 +72,8 @@ def get_closest_bar(data, longitude, latitude):
 if __name__ == '__main__':
     filepath = get_filepath_from_argv(argv)
     data = load_data(filepath)
-    print('Введите координаты.\nlongitude:')
-    longitude = float(input())
-    print('latitude:')
-    latitude = float(input())
+    longitude = float(input('Введите координаты\nlongitude:'))
+    latitude = float(input('latitude:'))
 
     print('Biggest bar: {}'.format(get_biggest_bar(data)))
     print('Smallest bar: {}'.format(get_smallest_bar(data)))
