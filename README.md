@@ -7,8 +7,8 @@ the smallest bar and closest bar.
 Usage
 -----
 
-Download [list of bars](http://data.mos.ru/opendata/7710881420-bary).
-Enter the path to the list of bars by first parameter
+1. Download [list of bars](http://data.mos.ru/opendata/7710881420-bary).
+2. Run script and enter the path to the list of bars by first parameter.
 ```
 ~$ python3 bars.py 'Бары.json'
 Enter the coordinates
