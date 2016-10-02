@@ -21,7 +21,7 @@ def get_seats_count(bar):
     return bar['Cells']['SeatsCount']
 
 
-def get_distance_to_bar(bar, **kwargs):
+def get_distance(bar, **kwargs):
     longitude1, latitude1 = kwargs['longitude'], kwargs['latitude']
     coordinates = bar['Cells']['geoData']['coordinates']
     longitude2, latitude2 = coordinates[0], coordinates[1]
@@ -47,8 +47,8 @@ def get_smallest_bar(data):
 
 
 def get_closest_bar(data, longitude, latitude):
-    get_distance = partial(get_distance_to_bar, longitude=longitude, latitude=latitude)
-    closest_bar = min(data, key=get_distance)
+    get_distance_to_bar = partial(get_distance, longitude=longitude, latitude=latitude)
+    closest_bar = min(data, key=get_distance_to_bar)
     return closest_bar['Cells']['Name']
 
 
