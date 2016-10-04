@@ -6,13 +6,12 @@ from functools import partial
 
 
 def get_filepath_from_argv(argv):
-    filepath = argv[1]
-    if not os.path.exists(filepath):
-        raise FileExistsError
-    return filepath
+    return argv[1]
 
 
 def load_data(filepath):
+    if not os.path.exists(filepath):
+        return None
     with open(filepath, 'r') as file_handler:
         return json.load(file_handler)
 
@@ -30,20 +29,12 @@ def get_distance(bar, **kwargs):
 
 def get_biggest_bar(data):
     biggest_bar = max(data, key=get_seats_count)
-    max_seats_count = biggest_bar['Cells']['SeatsCount']
-    # if more than one bar with so many seats
-    biggest_bars_list = [bar['Cells']['Name'] for bar in data
-                         if get_seats_count(bar) == max_seats_count]
-    return biggest_bars_list
+    return biggest_bar['Cells']['Name']
 
 
 def get_smallest_bar(data):
     smallest_bar = min(data, key=get_seats_count)
-    min_seats_count = smallest_bar['Cells']['SeatsCount']
-    # if more than one bar with so many seats
-    smallest_bars_list = [bar['Cells']['Name'] for bar in data
-                          if get_seats_count(bar) == min_seats_count]
-    return smallest_bars_list
+    return smallest_bar['Cells']['Name']
 
 
 def get_closest_bar(data, longitude, latitude):
@@ -58,13 +49,13 @@ if __name__ == '__main__':
     except IndexError:
         print('Enter the path to the list of bars by first parameter.')
         exit()
-    except FileExistsError:
-        print('File does not exists.')
-        exit()
 
     data = load_data(filepath)
-    longitude = float(input('Enter the coordinates\nlongitude:'))
-    latitude = float(input('latitude:'))
+    if data is None:
+        print('File does not exists.')
+        exit()
+    longitude = float(input('Enter the coordinates\nlongitude: '))
+    latitude = float(input('latitude: '))
 
     print('Biggest bar: {}'.format(get_biggest_bar(data)))
     print('Smallest bar: {}'.format(get_smallest_bar(data)))

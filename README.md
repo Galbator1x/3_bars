@@ -12,11 +12,11 @@ Usage
 ```
 ~$ python3 bars.py 'Бары.json'
 Enter the coordinates
-longitude:37.9
-latitude:55.9
-Biggest bar: ['Ночной клуб «Орфей»']
-Smallest bar: ['БАР. СОКИ', 'Соки', 'Фреш-бар', 'Фито-бар', 'Бар в Деловом центре Яуза']
-Closest bar: Бар «ЭПИЦЕНТР»
+longitude: 37
+latitude: 55.8
+Biggest bar: Ночной клуб «Орфей»
+Smallest bar: БАР. СОКИ
+Closest bar: Бар «ДЖАНГО»
 ```
 
 Requirements
