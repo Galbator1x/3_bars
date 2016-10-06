@@ -52,7 +52,7 @@ if __name__ == '__main__':
     data = load_data(filepath)
     if data is None:
         print('File does not exists.')
-        exit()
+        exit(1)
     longitude = float(input('Enter the coordinates\nlongitude: '))
     latitude = float(input('latitude: '))
 
