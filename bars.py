@@ -1,12 +1,15 @@
 import json
 import os
+import argparse
 from math import sqrt
-from sys import argv
 from functools import partial
 
 
-def get_filepath_from_argv(argv):
-    return argv[1]
+def get_filepath_from_argv():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filepath', help='path to the list of bars')
+    args = parser.parse_args()
+    return args.filepath
 
 
 def load_data(filepath):
@@ -44,11 +47,7 @@ def get_closest_bar(data, longitude, latitude):
 
 
 if __name__ == '__main__':
-    try:
-        filepath = get_filepath_from_argv(argv)
-    except IndexError:
-        print('Enter the path to the list of bars by first parameter.')
-        exit()
+    filepath = get_filepath_from_argv()
 
     data = load_data(filepath)
     if data is None:
