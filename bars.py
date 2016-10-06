@@ -5,7 +5,7 @@ from math import sqrt
 from functools import partial
 
 
-def get_filepath_from_argv():
+def get_filepath():
     parser = argparse.ArgumentParser()
     parser.add_argument('filepath', help='path to the list of bars')
     args = parser.parse_args()
@@ -47,8 +47,7 @@ def get_closest_bar(data, longitude, latitude):
 
 
 if __name__ == '__main__':
-    filepath = get_filepath_from_argv()
-
+    filepath = get_filepath()
     data = load_data(filepath)
     if data is None:
         print('File does not exists.')
